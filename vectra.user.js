@@ -26,7 +26,23 @@ setInterval(function() {
 
 (function() {
     'use strict';
+    let AdminIcon = localStorage.getItem("AdminIcon");
+    let AvatarPage = localStorage.getItem("AvatarPage");
+    let HideMsg = localStorage.getItem("HideMsg");
+    if (!AdminIcon)
+    {
+        localStorage.setItem("AdminIcon", "Disabled");
+    }
+    if (!AvatarPage)
+    {
+        localStorage.setItem("AvatarPage", "Disabled");
+    }
+    if (!HideMsg)
+    {
+        localStorage.setItem("HideMsg", "Disabled");
+    }
 
+    
     let Admins = ["simple", "car", "zinc", "ROBLOX", "skeet", "kudz", "cozol", "juju", "ariez"];
     console.log("STOP, Do not put any code here unless approved by any Mods, Admins, Trusted Community Members, or the owner of VECTRA.");
     console.log("If you see any errors, report it to us!");
@@ -179,6 +195,55 @@ setInterval(function() {
             document.querySelector("body > #main > .container > div > div:nth-child(2) > select").remove();
             r15.remove();
         }
+        else if (window.location.pathname == "/go")
+    {
+        let goDiv = document.createElement('div');
+        goDiv.setAttribute('id', 'main');
+        goDiv.setAttribute('style', 'min-height: 100vh;width: 100%; padding-top:7rem;');
+
+        document.title = "VECTRA GO - Vectra";
+        document.querySelector("body > div:nth-child(2)").parentNode.replaceChild(goDiv, document.querySelector("body > div:nth-child(2)"));
+        goDiv.innerHTML = `
+    <div class="container">
+
+        <div class="alert p-2 alert-warning d-flex align-items-center">
+            <i class="bi bi-envelope-plus ms-2" style="font-size: 30px;"></i>
+            <div class="m-2">
+                VECTRA GO is in alpha right now! Report any bugs to our team.
+            </div>
+        </div>
+<div class="d-flex align-items-center mb-2">
+            <p style="width: fit-content;height: 100%;" class="me-auto">Theme: <b>`+ Theme +`</b></p>
+            <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Theme</button>
+  <ul class="dropdown-menu" style="">
+    <li><a class="dropdown-item" href="/theme/obc">OBC by W(x20)</a></li>
+    <li><a class="dropdown-item" href="/theme/clean">Clean</a></li>
+    <li><a class="dropdown-item" href="/theme/early">Early Syntax (August)</a></li>
+    <li><a class="dropdown-item" href="/theme/main">Main</a></li>
+  </ul>
+</div>
+        </div>
+        <div class="d-flex align-items-center mb-2">
+            <p style="width: fit-content;height: 100%;" class="me-auto">Show Admin Icons: <b>`+ AdminIcon +`</b></p>
+            <a class="btn btn-primary btn-sm d-flex fw-bold text-decoration-none" href="/adminicons/`+ AdminIcon +`">`+ getStringToggle(AdminIcon) +`</a>
+        </div>
+        <div class="d-flex align-items-center mb-2">
+            <p style="width: fit-content;height: 100%;" class="me-auto">Fix Avatar Page: <b>`+ AvatarPage +`</b></p>
+            <a class="btn btn-primary btn-sm d-flex fw-bold text-decoration-none" href="/avatarpage/`+ AvatarPage +`">`+ getStringToggle(AvatarPage) +`</a>
+        </div>
+        <div class="d-flex align-items-center mb-2">
+            <p style="width: fit-content;height: 100%;" class="me-auto">Hide Website Message: <b>`+ HideMsg +`</b></p>
+            <a class="btn btn-danger btn-sm d-flex fw-bold text-decoration-none" href="/hidemsg/`+ HideMsg +`">`+ getStringToggle(HideMsg) +`</a>
+        </div>
+
+
+
+
+        </div>
+    </div>
+</div>`;
+    }
     }
 
 
@@ -207,21 +272,8 @@ setInterval(function() {
         }
     }
 
-    let AdminIcon = localStorage.getItem("AdminIcon");
-    let AvatarPage = localStorage.getItem("AvatarPage");
-    let HideMsg = localStorage.getItem("HideMsg");
-    if (!AdminIcon)
-    {
-        localStorage.setItem("AdminIcon", "Disabled");
-    }
-    if (!AvatarPage)
-    {
-        localStorage.setItem("AvatarPage", "Disabled");
-    }
-    if (!HideMsg)
-    {
-        localStorage.setItem("HideMsg", "Disabled");
-    }
+
+
     if (window.location.pathname == "/go")
     {
         let goDiv = document.createElement('div');
